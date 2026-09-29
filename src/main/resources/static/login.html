@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录 - Four.meme Volume Bot</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+<div class="login-box">
+    <h1>Four.meme <span>Volume Bot</span></h1>
+
+    <!-- ========== 第 1 步：用户名密码 ========== -->
+    <div id="step-login" class="step active">
+        <h2>登录</h2>
+        <div class="form-group">
+            <label>用户名</label>
+            <input type="text" id="username" placeholder="请输入用户名" autocomplete="username">
+        </div>
+        <div class="form-group">
+            <label>密码</label>
+            <input type="password" id="password" placeholder="请输入密码" autocomplete="current-password">
+        </div>
+        <button id="btn-login" class="btn primary">登录</button>
+        <div id="login-error" class="error-msg"></div>
+    </div>
+
+    <!-- ========== 修改初始密码 ========== -->
+    <div id="step-password" class="step">
+        <h2>修改初始密码</h2>
+        <p class="hint">首次登录必须修改密码后才能继续</p>
+        <div class="form-group">
+            <label>原密码</label>
+            <input type="password" id="old-password" placeholder="请输入原密码" autocomplete="current-password">
+        </div>
+        <div class="form-group">
+            <label>新密码（至少 6 位）</label>
+            <input type="password" id="new-password" placeholder="请输入新密码" autocomplete="new-password">
+        </div>
+        <div class="form-group">
+            <label>确认新密码</label>
+            <input type="password" id="confirm-password" placeholder="再次输入新密码" autocomplete="new-password">
+        </div>
+        <button id="btn-change-password" class="btn primary">确认修改</button>
+        <div id="password-error" class="error-msg"></div>
+    </div>
+
+    <!-- ========== 第 2 步：输入 TOTP 验证码 ========== -->
+    <div id="step-totp" class="step">
+        <h2>双重验证</h2>
+        <p class="hint">请输入 Google Authenticator 中的 6 位验证码</p>
+        <div class="form-group">
+            <input type="text" id="totp-code" maxlength="6" inputmode="numeric">
+        </div>
+        <button id="btn-totp" class="btn primary">验证</button>
+        <button id="btn-back-totp" class="btn secondary">返回</button>
+        <div id="totp-error" class="error-msg"></div>
+    </div>
+
+    <!-- ========== 第 3 步：首次绑定 Google 验证器 ========== -->
+    <div id="step-bind" class="step">
+        <h2>首次绑定 Google 验证器</h2>
+        <p class="hint">请用 Google Authenticator 扫描下方二维码</p>
+        <div class="qr-box">
+            <img id="qr-code" src="" alt="二维码">
+        </div>
+        <div class="secret-box">
+            <span>密钥：</span>
+            <code id="totp-secret"></code>
+            <button id="btn-copy-secret" class="btn-copy">复制</button>
+        </div>
+        <div class="form-group">
+            <label>扫描后输入 6 位验证码</label>
+            <input type="text" id="bind-code" placeholder="6位验证码" maxlength="6" inputmode="numeric">
+        </div>
+        <button id="btn-bind" class="btn primary">确认绑定</button>
+        <div id="bind-error" class="error-msg"></div>
+    </div>
+</div>
+
+<script src="login.js"></script>
+</body>
+</html>

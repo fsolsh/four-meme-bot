@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Four.meme Volume Bot 管理后台</title>
+    <link rel="stylesheet" href="style.css?v=20260923">
+</head>
+<body>
+<header class="topbar">
+    <div class="logo">Four.meme <span>Volume Bot</span></div>
+    <div class="status">
+        <span id="api-status" class="dot"></span>
+        <span id="api-status-text">检测中...</span>
+        <span class="divider"></span>
+        <span id="current-user">-</span>
+        <button id="btn-change-pwd" class="btn-logout">修改密码</button>
+        <button id="btn-user-mgmt" class="btn-logout" style="display:none;" onclick="UserAdmin.open()">用户管理</button>
+        <button class="btn-logout" onclick="logout()">退出</button>
+    </div>
+</header>
+
+<nav class="tabs">
+    <button class="tab active" data-tab="wallets">钱包管理</button>
+    <button class="tab" data-tab="tasks">任务管理</button>
+    <button class="tab" data-tab="trades">交易记录</button>
+</nav>
+
+<main>
+    <!-- ==================== 钱包管理 ==================== -->
+    <section id="tab-wallets" class="tab-panel active">
+        <div class="toolbar">
+            <button class="btn primary" onclick="WalletUI.openCreate()">创建钱包</button>
+            <button class="btn" onclick="WalletUI.openImport()">导入助记词</button>
+            <button class="btn" onclick="WalletUI.openDerive()">批量派生</button>
+            <button class="btn" onclick="WalletUI.openVerify()">验证助记词</button>
+            <button class="btn" onclick="WalletUI.refreshAll()">刷新全部余额</button>
+            <button class="btn" onclick="WalletUI.reload()">刷新列表</button>
+        </div>
+        <div class="table-wrap">
+            <table class="data-table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>地址</th>
+                    <th>BNB余额</th>
+                    <th>USDT余额</th>
+                    <th>代币持仓</th>
+                    <th>状态</th>
+                    <th>助记词</th>
+                    <th>创建时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody id="wallet-tbody">
+                <tr><td colspan="9" class="empty">加载中...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- ==================== 任务管理 ==================== -->
+    <section id="tab-tasks" class="tab-panel">
+        <div class="toolbar">
+            <button class="btn primary" onclick="TaskUI.openCreate()">创建任务</button>
+            <button class="btn" onclick="TaskUI.reload()">刷新列表</button>
+        </div>
+        <div class="table-wrap">
+            <table class="data-table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>代币简称</th>
+                    <th>代币地址</th>
+                    <th>金额范围</th>
+                    <th>间隔(秒)</th>
+                    <th>买入权重</th>
+                    <th>状态</th>
+                    <th>毕业</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody id="task-tbody">
+                <tr><td colspan="9" class="empty">加载中...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- ==================== 交易记录 ==================== -->
+    <section id="tab-trades" class="tab-panel">
+        <div class="toolbar">
+            <input id="trade-token-filter" type="text" placeholder="按代币简称过滤" class="input">
+            <input id="trade-wallet-filter" type="number" placeholder="按钱包ID过滤" class="input">
+            <button class="btn primary" onclick="TradeUI.search()">查询</button>
+            <button class="btn" onclick="TradeUI.clearFilter()">清空过滤</button>
+        </div>
+        <div class="table-wrap">
+            <table class="data-table">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>交易对</th>
+                    <th>钱包ID</th>
+                    <th>交易类型</th>
+                    <th>交易金额</th>
+                    <th>项目阶段</th>
+                    <th>交易状态</th>
+                    <th>交易哈希</th>
+                    <th>时间</th>
+                </tr>
+                </thead>
+                <tbody id="trade-tbody">
+                <tr><td colspan="9" class="empty">加载中...</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="trade-pagination" class="pagination"></div>
+    </section>
+</main>
+
+<div id="modal-mask" class="modal-mask">
+    <div class="modal">
+        <div class="modal-header">
+            <h3 id="modal-title">标题</h3>
+            <button class="modal-close" onclick="Modal.close()">×</button>
+        </div>
+        <div class="modal-body" id="modal-body"></div>
+        <div class="modal-footer">
+            <button class="btn" onclick="Modal.close()">取消</button>
+            <button class="btn primary" id="modal-confirm">确认</button>
+        </div>
+    </div>
+</div>
+
+<div id="toast-container" class="toast-container"></div>
+
+<script src="app.js?v=20260923"></script>
+</body>
+</html>
