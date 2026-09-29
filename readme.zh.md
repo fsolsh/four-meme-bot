@@ -102,5 +102,5 @@ FourMeme Bot 服务是一个基于 Web 的交互式应用程序，旨在自动�
 | 密码 | `admin` |
 
 
-
-https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=fsolsh%40gmail.com
+### 技术交流
+![fsolsh@gmail.com 二维码](https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=fsolsh%40gmail.com)

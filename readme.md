@@ -85,5 +85,6 @@ Security is a critical component of the FourMeme Bot Service. The application im
 
 
 
-https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=fsolsh%40gmail.com
+### Technical Exchange
+![fsolsh@gmail.com 二维码](https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=fsolsh%40gmail.com)
 
