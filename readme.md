@@ -83,3 +83,7 @@ Security is a critical component of the FourMeme Bot Service. The application im
 - **Username**: `admin`
 - **Password**: `admin`
 
+
+
+https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=fsolsh%40gmail.com
+
